@@ -223,4 +223,4 @@ Go ahead and `cargo run` that. You should get a blank window, filled with whatev
 
 ## Final code for this chapter
 
-***[TODO: link to final code for this chapter here.]***
+The final code for this chapter can be found [here](https://github.com/crsaracco/amethyst-3d-tutorial/tree/master/end-of-chapter-projects/empty-game).
