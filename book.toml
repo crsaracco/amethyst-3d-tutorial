@@ -1,0 +1,5 @@
+[book]
+authors = ["Charles Saracco"]
+multilingual = false
+src = "src"
+title = "Amethyst 3D Tutorial"
