@@ -16,6 +16,8 @@ I'm still very much a noob at Amethyst, so if you notice something that I misund
 
 This tutorial assumes you're already familiar with Rust development. If you aren't, I'd recommend reading a little bit of [the Rust book](https://doc.rust-lang.org/book/) and playing around with Rust a little.
 
+Also, I'm going to target **Amethyst 0.12.0** in this tutorial. Hopefully the concepts will carry over to future versions. I'll update this book on a "best-effort" *(read: "if I feel like it and have time to do so")* basis -- feel free to send those issues and PRs to prod me though!
+
 ## What game are we implementing here?
 
 *"Back in the day"™*, I played a decent amount of flash games. But now, flash is dead. RIP.
