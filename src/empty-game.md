@@ -173,7 +173,7 @@ In particular, we're going to be using the `RenderingBundle` here, which (along 
 
 ```rust
 // (other includes)
-use amethyst::renderer::plugins::RenderShaded3D;
+use amethyst::renderer::plugins::RenderPbr3D;
 use amethyst::renderer::plugins::RenderToWindow;
 use amethyst::renderer::types::DefaultBackend;
 use amethyst::renderer::RenderingBundle;
@@ -187,7 +187,7 @@ fn main() -> amethyst::Result<()> {
 
     // Set up the display configuration
     let display_config = DisplayConfig {
-        title: "Cubefield".to_string(),
+        title: "Amethyst".to_string(),
         dimensions: Some((1024, 768)),
         ..Default::default()
     };
@@ -198,9 +198,9 @@ fn main() -> amethyst::Result<()> {
             RenderingBundle::<DefaultBackend>::new()
                 .with_plugin(
                     RenderToWindow::from_config(display_config)
-                        .with_clear([0.95, 0.95, 0.95, 1.0]),
+                        .with_clear([0.529, 0.808, 0.98, 1.0]),
                 )
-                .with_plugin(RenderShaded3D::default()),
+                .with_plugin(RenderPbr3D::default()),
         )?;
 
     // (Application)
@@ -215,9 +215,9 @@ That's a lot of new code, so let's break it down line-by-line.
  - `RenderingBundle` is the bundle we're using to set up rendering. As far as bundles go, `RenderingBundle` is a pretty complex one: it delegates most of its work to plugins, which lets the user set up their rendering system as they see fit. It's also parameterized on a "Backend", but since you set up your rendering backend in `Cargo.toml`, you can just use `DefaultBackend` here.
  - Since `RenderingBundle` delegates most of its work to plugins, we need to give it some plugins. `with_plugin` is the function you use to add plugins, at least for `RenderingBundle`.
  - The first plugin we're using is `RenderToWindow`, which sets up a window for us and allows us to draw to it. You have to supply a `DisplayConfig` for it to use, which is what we did up above. We're also specifying a "clear value", which is what the renderer uses as a "background" to your game when there was nothing in front of it to render.
-    - The format for the color is `[Red, Green, Blue, Alpha]`. You'll probably want to set alpha to `1.0`, and the rest of the colors are up to you. Here I made a very light off-white grey.
+    - The format for the color is `[Red, Green, Blue, Alpha]`. You'll probably want to set alpha to `1.0`, and the rest of the colors are up to you. Here I made light sky-blue color.
     - If you don't specify a clear value, the renderer won't clear the screen, just drawing over the last frame directly. It'll look similar to [the classic Windows lagging graphics glitch](https://www.youtube.com/watch?v=ZjlSJQBdojo). Try commenting that line of code out when you have more of a game to work with!
- - The second plugin is `RenderShaded3D`, which allows us to draw 3D shapes and such.
+ - The second plugin is `RenderPbr3D`, which is a [Physically Based Rendering](https://en.wikipedia.org/wiki/Physically_based_rendering) engine that we'll be using for rendering our game.
 
 Go ahead and `cargo run` that. You should get a blank window, filled with whatever your clear color is.
 
