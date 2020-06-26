@@ -1,5 +1,7 @@
 # amethyst-3d-tutorial
 
+**[NOTE: on hiatus from writing this for now. No ETA on returning. Maybe, maybe not?]**
+
 A tutorial for creating 3D games with Amethyst, in mdbook format.
 
 Read the tutorial [here](https://crsaracco.github.io/amethyst-3d-tutorial/)!
