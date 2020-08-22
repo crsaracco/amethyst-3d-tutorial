@@ -1,0 +1,405 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Creating an empty game - Amethyst 3D Tutorial</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">Amethyst 3D Tutorial</a></li><li class="chapter-item expanded "><a href="empty-game.html" class="active"><strong aria-hidden="true">1.</strong> Creating an empty game</a></li><li class="chapter-item expanded "><a href="entity-and-component.html"><strong aria-hidden="true">2.</strong> Entity and Component</a></li><li class="chapter-item expanded "><a href="drawing-something-on-the-screen.html"><strong aria-hidden="true">3.</strong> Drawing something on the screen</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Amethyst 3D Tutorial</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#creating-an-empty-game" id="creating-an-empty-game">Creating an empty game</a></h1>
+<p>In this chapter, I'm going to go from &quot;having no project at all&quot; to &quot;having a game that does nothing except spawn a blank Amethyst window&quot;. Getting this basic game skeleton stuff out of the way will allow us to focus on concepts and game functionality in future chapters.</p>
+<h2><a class="header" href="#create-a-rust-project" id="create-a-rust-project">Create a Rust project</a></h2>
+<p>First, you need to create a Rust project.</p>
+<pre><code>cargo new cubefield
+</code></pre>
+<p>Phew, that was a lot of work.</p>
+<h2><a class="header" href="#set-up-amethyst-dependencies-and-the-main-function" id="set-up-amethyst-dependencies-and-the-main-function">Set up Amethyst dependencies and the <code>main</code> function</a></h2>
+<p>First thing's first, you need to add <code>amethyst</code> to your project's dependencies. You also need to choose a backend:</p>
+<ul>
+<li><code>vulkan</code> for Linux and Windows (and anything else that supports Vulkan)</li>
+<li><code>metal</code> for Mac OS X</li>
+<li><code>dx12</code> (for DirectX) is <em><strong>not</strong></em> currently available in Amethyst, but might be one day.</li>
+</ul>
+<p>Since I'm on Linux, I'll be using <code>vulkan</code>.</p>
+<p><strong>Cargo.toml:</strong></p>
+<pre><code class="language-toml">[package]
+# ...
+
+[dependencies]
+amethyst = {version=&quot;0.12.0&quot;, features=[&quot;vulkan&quot;]}
+</code></pre>
+<p>To make a few things easier, we're also going to change the function signature of <code>main</code>. Most Amethyst games use the return type <code>amethyst::Result&lt;()&gt;</code>, so that you can use <code>?</code> to automatically exit if various setup things fail.</p>
+<p><strong>main.rs:</strong></p>
+<pre><pre class="playground"><code class="language-rust">fn main() -&gt; amethyst::Result&lt;()&gt; {
+    Ok(())
+}
+</code></pre></pre>
+<p>Go ahead and <code>cargo run</code> that, and wait for Cargo to pull down the giant dependency tree and compile it. Depending on your computer's specs, it might take <em>a while</em>.</p>
+<p>If everything worked, congrats! You now have some code that depends on Amethyst. But it doesn't do anything yet...</p>
+<h2><a class="header" href="#create-a-logger" id="create-a-logger">Create a logger</a></h2>
+<p>Setting up a logger allows us to see what's going on in our game while it's running. It's particularly useful while you're still laying the groundwork of your game, as we are here: any debug, info, and warning message from within the Amethyst ecosystem will be printed out to the screen.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // Set up the Amethyst logger
+    amethyst::start_logger(Default::default());
+
+    Ok(())
+}
+</code></pre></pre>
+<p>As the Amethyst book says, there are many ways to configure the logger. <a href="https://docs-src.amethyst.rs/stable/amethyst/struct.Logger.html">Check out the API reference</a> for more info. The default setup will work just fine for this tutorial, though.</p>
+<h2><a class="header" href="#create-an-application-object" id="create-an-application-object">Create an <code>Application</code> object</a></h2>
+<p>The <a href="https://docs-src.amethyst.rs/stable/amethyst/type.Application.html">API reference</a> describes the <code>Application</code> object pretty well:</p>
+<blockquote>
+<p>An Application is the root object of the game engine. It binds the OS event loop, state machines, timers and other core components in a central place.</p>
+<p>Since Application functions as the root of the game, Amethyst does not need to use any global variables. Within this object is everything that your game needs to run.</p>
+</blockquote>
+<p>Every Amethyst game creates an <code>Application</code>, so that seems like a good place to start.</p>
+<p>In order to create an <code>Application</code>, we first have to create a few bits of information that it depends on:</p>
+<ul>
+<li>A <code>PathBuf</code> to an assets directory</li>
+<li>An initial <code>State</code> to start the game in</li>
+<li>A <code>GameDataBuilder</code> object; <code>GameData</code> holds a bunch of game logic and other stuff that your game needs during runtime.</li>
+</ul>
+<h4><a class="header" href="#assets-directory" id="assets-directory">Assets directory</a></h4>
+<p>First, we need to create a <code>PathBuf</code> that represents an assets directory. Assets are anything that your game loads before/during game runtime -- things like 3D models, textures, audio, sprites, etc. Pretty much any game of any substantial size will have an assets directory... but we won't need to have one for quite a while in this tutorial! Let's just give it a sane directory name (<code>assets</code>) for now, and I'll describe how assets work when we start using them.</p>
+<pre><pre class="playground"><code class="language-rust">use amethyst::utils::application_root_dir;
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (logger)
+
+    // Set up the assets directory (PathBuf)
+    let app_root = application_root_dir()?;
+    let assets_dir = app_root.join(&quot;assets&quot;);
+
+    Ok(())
+}
+</code></pre></pre>
+<p>By the way, you don't actually <em>need</em> to create the <code>assets/</code> directory now (in the root directory of your project, at the same level as <code>src/</code>), but you can if you want.</p>
+<h4><a class="header" href="#create-an-initial-state" id="create-an-initial-state">Create an initial <code>State</code></a></h4>
+<p>Amethyst has a neat style of state management built-in called a &quot;pushdown automaton&quot;, which you can read a little more about on <a href="https://en.wikipedia.org/wiki/Pushdown_automaton">Wikipedia</a> and <a href="https://github.com/amethyst/amethyst/wiki/Game-State-Machine-Design">Amethyst's wiki page</a>. It's a little different than the (maybe?) more-common &quot;<a href="https://en.wikipedia.org/wiki/Finite-state_machine">finite-state machine</a>&quot;, but pushdown automatons are a little more powerful.</p>
+<p>Regardless, we won't be needing the features of the state management system quite yet. Simple games like this can have just one main &quot;game&quot; state; once you want to start implementing main menus, pause menus, etc, <em>then</em> you'll probably want to start reaching for state management. Let's just satisfy <code>Application</code> for now.</p>
+<p>The easiest way to create a <code>State</code> in Amethyst is to define a unit struct and implement the <code>SimpleState</code> trait for it:</p>
+<pre><pre class="playground"><code class="language-rust">// (other includes)
+use amethyst::SimpleState;
+
+struct GameState;
+impl SimpleState for GameState {}
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (...)
+}
+</code></pre></pre>
+<h4><a class="header" href="#create-a-gamedatabuilder" id="create-a-gamedatabuilder">Create a <code>GameDataBuilder</code></a></h4>
+<p><code>GameData</code> is the &quot;central repository&quot; for a bunch of stuff your game needs during runtime, and <code>GameDataBuilder</code> is a convenient way to build it. For now, we don't need anything in the <code>GameData</code>, so we can just create a builder with nothing in it. We'll be adding stuff to it very soon (before the end of this chapter, even).</p>
+<pre><pre class="playground"><code class="language-rust">// (other includes)
+use amethyst::GameDataBuilder;
+
+// (GameState)
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (logger)
+    // (assets directory)
+
+    // Set up an empty (for now) GameDataBuilder
+    let game_data = GameDataBuilder::default();
+
+    Ok(())
+}
+</code></pre></pre>
+<h4><a class="header" href="#create-an-application-and-run-our-game" id="create-an-application-and-run-our-game">Create an <code>Application</code>, and run our game!</a></h4>
+<p>We're finally ready to create an <code>Application</code>!</p>
+<pre><pre class="playground"><code class="language-rust">// (other includes)
+use amethyst::Application;
+
+// (GameState)
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (logger)
+    // (assets directory)
+    // (GameDataBuilder)
+
+    // Run the game!
+    let mut game = Application::new(assets_dir, GameState, game_data)?;
+    game.run();
+
+    Ok(())
+}
+</code></pre></pre>
+<p>Go ahead and <code>cargo run</code> this to make sure everything's working. You should just see a few log messages print out before Amethyst dumps you into an infinite loop. <code>Ctrl+C</code>.</p>
+<h2><a class="header" href="#spawn-a-window" id="spawn-a-window">Spawn a window</a></h2>
+<p>Alright, now we need a window for our game.</p>
+<p>To do this, we're going to bring in a &quot;<a href="https://docs.amethyst.rs/stable/amethyst_core/bundle/trait.SystemBundle.html">Bundle</a>&quot; that implements a lot of the stuff for us. In general, you can think of bundles as a cross-section of game functionality that implements some feature for you. It's possible to (and you will likely want to eventually) create your own bundles, but that's a bit far away for now.</p>
+<p>In particular, we're going to be using the <code>RenderingBundle</code> here, which (along with some bundle plugins) implements a bunch of rendering stuff for us, including window creation itself.</p>
+<pre><pre class="playground"><code class="language-rust">// (other includes)
+use amethyst::renderer::plugins::RenderPbr3D;
+use amethyst::renderer::plugins::RenderToWindow;
+use amethyst::renderer::types::DefaultBackend;
+use amethyst::renderer::RenderingBundle;
+use amethyst::window::DisplayConfig;
+
+// (GameState)
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (logger)
+    // (assets directory)
+
+    // Set up the display configuration
+    let display_config = DisplayConfig {
+        title: &quot;Amethyst&quot;.to_string(),
+        dimensions: Some((1024, 768)),
+        ..Default::default()
+    };
+
+    // Set up the GameDataBuilder
+    let game_data = GameDataBuilder::default()
+        .with_bundle(
+            RenderingBundle::&lt;DefaultBackend&gt;::new()
+                .with_plugin(
+                    RenderToWindow::from_config(display_config)
+                        .with_clear([0.529, 0.808, 0.98, 1.0]),
+                )
+                .with_plugin(RenderPbr3D::default()),
+        )?;
+
+    // (Application)
+    Ok(())
+}
+</code></pre></pre>
+<p>That's a lot of new code, so let's break it down line-by-line.</p>
+<ul>
+<li>The <a href="https://docs.amethyst.rs/stable/amethyst_window/struct.DisplayConfig.html">DisplayConfig</a> is what will eventually get used by the <code>RenderToWindow</code> plugin to set up our window for us. Here we're setting the window's title and dimensions explicitly, then using the defaults for every other field in the struct.</li>
+<li>We already had <code>GameDataBuilder</code> before, but now we're adding a bundle to it. <code>with_bundle</code> is the function you use to add a bundle.</li>
+<li><code>RenderingBundle</code> is the bundle we're using to set up rendering. As far as bundles go, <code>RenderingBundle</code> is a pretty complex one: it delegates most of its work to plugins, which lets the user set up their rendering system as they see fit. It's also parameterized on a &quot;Backend&quot;, but since you set up your rendering backend in <code>Cargo.toml</code>, you can just use <code>DefaultBackend</code> here.</li>
+<li>Since <code>RenderingBundle</code> delegates most of its work to plugins, we need to give it some plugins. <code>with_plugin</code> is the function you use to add plugins, at least for <code>RenderingBundle</code>.</li>
+<li>The first plugin we're using is <code>RenderToWindow</code>, which sets up a window for us and allows us to draw to it. You have to supply a <code>DisplayConfig</code> for it to use, which is what we did up above. We're also specifying a &quot;clear value&quot;, which is what the renderer uses as a &quot;background&quot; to your game when there was nothing in front of it to render.
+<ul>
+<li>The format for the color is <code>[Red, Green, Blue, Alpha]</code>. You'll probably want to set alpha to <code>1.0</code>, and the rest of the colors are up to you. Here I made light sky-blue color.</li>
+<li>If you don't specify a clear value, the renderer won't clear the screen, just drawing over the last frame directly. It'll look similar to <a href="https://www.youtube.com/watch?v=ZjlSJQBdojo">the classic Windows lagging graphics glitch</a>. Try commenting that line of code out when you have more of a game to work with!</li>
+</ul>
+</li>
+<li>The second plugin is <code>RenderPbr3D</code>, which is a <a href="https://en.wikipedia.org/wiki/Physically_based_rendering">Physically Based Rendering</a> engine that we'll be using for rendering our game.</li>
+</ul>
+<p>Go ahead and <code>cargo run</code> that. You should get a blank window, filled with whatever your clear color is.</p>
+<h2><a class="header" href="#final-code-for-this-chapter" id="final-code-for-this-chapter">Final code for this chapter</a></h2>
+<p>The final code for this chapter can be found <a href="https://github.com/crsaracco/amethyst-3d-tutorial/tree/master/end-of-chapter-projects/empty-game">here</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="title.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="entity-and-component.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="title.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="entity-and-component.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

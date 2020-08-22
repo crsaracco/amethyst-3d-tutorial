@@ -1,0 +1,300 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Entity and Component - Amethyst 3D Tutorial</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">Amethyst 3D Tutorial</a></li><li class="chapter-item expanded "><a href="empty-game.html"><strong aria-hidden="true">1.</strong> Creating an empty game</a></li><li class="chapter-item expanded "><a href="entity-and-component.html" class="active"><strong aria-hidden="true">2.</strong> Entity and Component</a></li><li class="chapter-item expanded "><a href="drawing-something-on-the-screen.html"><strong aria-hidden="true">3.</strong> Drawing something on the screen</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Amethyst 3D Tutorial</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#entity-and-component" id="entity-and-component">Entity and Component</a></h1>
+<p><em>[TODO: maybe re-write this a little better -- suggestions welcome]</em></p>
+<p><em>[TODO: also maybe move this page to the Appendix section?]</em></p>
+<p>We're almost ready to create shapes for our game and actually <em>draw</em> something, but first we should understand a little bit about what's going on under the hood in Amethyst when you &quot;create&quot; something in your game world.</p>
+<p>At its core, <strong>Amethyst is an <a href="https://en.wikipedia.org/wiki/Entity_component_system">entity-component-system</a> (ECS) style game engine</strong>. Although ECS is <em>kind of</em> a paradigm of creating &quot;objects&quot;, it's quite different from the &quot;<a href="https://en.wikipedia.org/wiki/Object-oriented_programming">object-oriented programming</a>&quot; (OOP) style that's commonly taught in schools.</p>
+<p>An <strong>entity</strong> represents a single object in your game world. To the programmer, these are typically unnamed; i.e. you don't &quot;bind&quot; them to a variable name, the ECS framework will store them for you.</p>
+<p>Under the hood, an entity is just a number representing its entity ID (and a little bit of extra data for internal ECS use which you don't have to worry about yet). You can't tell the game engine anything else about the entity, like <em>&quot;what kind of object is this?&quot;</em> or <em>&quot;how do I render this entity?&quot;</em> or anything else. It's just a number, that you don't even store yourself.</p>
+<p>So how do you use entities to build up objects for a game?</p>
+<p><strong>Components</strong> allow you to store additional information about an entity, like <em>&quot;this is a monster&quot;</em>, <em>&quot;this object is red&quot;</em>, or <em>&quot;this object is located at (35.0, 1.0, 0.0)&quot;</em>.</p>
+<p>In ECS, each different type of component is stored in its own storage. Let's say you had some RPG game -- all of the HPs for all of the different monsters and players in the game would be stored in some &quot;HP storage&quot;; all the MPs in their own &quot;MP storage&quot;, all of the items in their own &quot;Item storage&quot;, and so on.</p>
+<p>In OOP, you would store all of the data about your monsters in one struct per monster (its HP, its MP, a pointer to its mesh/texture/etc, its location in the world, etc).</p>
+<p>The reason for this entity/component split in ECS is that it allows you to store and retrieve your objects more efficiently, with noticeable effects on game performance. For example, if you cast some spell that did X damage to <em>every</em> monster in the world:</p>
+<ul>
+<li>In OOP, you'd have to load <em>all</em> of the structs for <em>all</em> of the monsters in the game. This would be terrible for cache performance, because you're pulling in a bunch of data you're ultimately not going to be using right now.</li>
+<li>In ECS, you just have to load the &quot;HP storage&quot; for all of the monsters -- you're using all of the data you just loaded, and <em>only</em> that data.</li>
+</ul>
+<p>In Amethyst's flavor of ECS, each instance of a component modifies exactly one entity. Each entity doesn't know anything about which components modify it. Here's a little example:</p>
+<pre><code>Entities   PositionComponent       TypeComponent   HpComponent
+0          [0] (1.0, 2.0, 0.0)     [0] Player      [0] 100
+1          [1] (5.0, 3.0, 0.0)     [1] Monster     [1] 50
+2          [2] (10.0, -2.0, 0.0)   [2] Building    [3] 75
+3          [3] (0.0, 5.0, 0.0)     [3] Monster
+                                    ^  ^
+                      (entity number)  (component value)
+</code></pre>
+<p>There are four entities in this tiny game: one player, one building, and two monsters. The positions for each entity are given in the table. The player (entity 0) has 100 HP, while the two monsters (entities 1 and 3) have 50 and 75 HP. Note that the building doesn't have any HP; every component is optional for each entity, and it doesn't really make sense for a building to have HP, so it doesn't have any <code>HpComponents</code> attached to it.</p>
+<p>If you were just given <code>entity 2</code>, you wouldn't be able to know anything about it without scanning all of your component storages. Luckily, you never need to go from entity -&gt; component, because you don't really do things this way in ECS.</p>
+<p>One neat thing about ECS is it allows you to do &quot;joins&quot; which are kind of similar to how relational databases work. If you want to modify all of the monsters' HPs, you would do a join on <code>TypeComponent</code> and <code>HpComponent</code> (which means that any entity that doesn't have both a type and an HP will be automatically filtered out), then you go through the results of your join and update the HP data if the Type is &quot;Monster&quot;. If you also gave each monster a <code>ColorComponent</code>, you could join on (<code>TypeComponent</code>, <code>ColorComponent</code>, and <code>HpComponent</code>), and update only the <code>HP</code>s of the entities that are both <code>Monster</code> and <code>Blue</code>. You can start to imagine some pretty cool functionality this enables you to do that would be pretty messy (and perhaps inefficient) in an OOP-style game engine!</p>
+<h2><a class="header" href="#entities-and-components-in-amethyst" id="entities-and-components-in-amethyst">Entities and components in Amethyst</a></h2>
+<p>To declare a component in Amethyst, you simply create a data structure (either a <code>struct</code> or an <code>enum</code>) that will hold the information that the component conveys, then you implement the <code>Component</code> trait for that data structure.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use amethyst::ecs::{Component, DenseVecStorage};
+
+// Type component
+enum Type {
+    Player,
+    Monster,
+    Building,
+}
+
+impl Component for Type {
+    type Storage = DenseVecStorage&lt;Self&gt;;
+}
+
+// HP component
+struct Hp {
+    hp: u32,
+}
+
+impl Component for Hp {
+    type Storage = DenseVecStorage&lt;Self&gt;;
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Remember that each component has its own storage -- the type that you give <code>type Storage</code> tells Amethyst how you want to actually store those components in memory. There are <a href="https://docs.rs/amethyst/0.9.0/amethyst/ecs/prelude/index.html?search=Storage">a few different types of storage to choose from</a>, but <code>DenseVecStorage</code> is a good default type to use if you don't have any good reasons to use something else.</p>
+<p>Usually, when you create an entity, you also give it any components that describe it. It'll end up looking something like this:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>world.create_entity()   // Create a new entity
+    .with(Type::Player) // Create a Type component, and associate it with this entity)
+    .with(Hp{hp: 100})  // Create an HP component, and associate it with this entity)
+    .build();
+<span class="boring">}
+</span></code></pre></pre>
+<p>where &quot;world&quot; is the thing that keeps track of all your entities and components (and other things, which we'll see later).</p>
+<h2><a class="header" href="#more-reading" id="more-reading">More reading</a></h2>
+<p>You can also read up on Entity and Component at <a href="https://book.amethyst.rs/stable/concepts/entity_and_component.html">the Amethyst book's page on this topic</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="empty-game.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="drawing-something-on-the-screen.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="empty-game.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="drawing-something-on-the-screen.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

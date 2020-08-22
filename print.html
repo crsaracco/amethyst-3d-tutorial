@@ -1,0 +1,772 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Amethyst 3D Tutorial</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">Amethyst 3D Tutorial</a></li><li class="chapter-item expanded "><a href="empty-game.html"><strong aria-hidden="true">1.</strong> Creating an empty game</a></li><li class="chapter-item expanded "><a href="entity-and-component.html"><strong aria-hidden="true">2.</strong> Entity and Component</a></li><li class="chapter-item expanded "><a href="drawing-something-on-the-screen.html"><strong aria-hidden="true">3.</strong> Drawing something on the screen</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Amethyst 3D Tutorial</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#amethyst-3d-tutorial" id="amethyst-3d-tutorial">Amethyst 3D Tutorial</a></h1>
+<p>After having read <a href="https://amethyst.rs/">Amethyst</a>'s official <a href="https://book.amethyst.rs/stable/">mdbook tutorial</a>, I've been excited to start diving in to Amethyst and trying some more stuff out, particularly when it comes to 3D game development.</p>
+<p>Unfortunately, I left the official book feeling a little lost on how to do 3D stuff, and I've seen a few other people around the web express the same feelings. The <a href="https://github.com/amethyst/amethyst/tree/master/examples">examples</a> have a lot of good content if you dig through them, but it's a little annoying having to piece together everything you need to do to get X done. So, I figured I'd create this tutorial! Worst-case, it'll serve as a little notebook for myself to reference, but hopefully it helps someone else out as well. :)</p>
+<p>I'll be covering a lot of the same stuff that the official book covers (at least as far as basic Amethyst engine concepts are concerned), but I'm going to structure this tutorial a little differently than the book does. Instead of describing a lot of the basic concepts up front and then making a game with those concepts afterwards, I'm going to inline all of those explanations, discussing the concepts right before you use them.</p>
+<p>If you want to, feel free to read <a href="https://book.amethyst.rs/stable/">the Amethyst book</a> now (especially everything up to and including chapter 3: &quot;Concepts&quot;) to get a feel for the Amethyst ecosystem. My goal is to eventually cover everything that the book does, though, so if you want to skip it and dive right in to 3D game development, I hope this tutorial explains everything well enough.</p>
+<p>Also, as a side-note, I'm going to postpone the use of assets and config files until much later in this tutorial compared to the book, because I think it makes it easier to understand what's going on in the Amethyst ecosystem that way. I will be covering that stuff later in the tutorial, so don't fear!</p>
+<h2><a class="header" href="#disclaimer" id="disclaimer">Disclaimer</a></h2>
+<p>I'm still very much a noob at Amethyst, so if you notice something that I misunderstood, feel free to send me an issue or pull request on <a href="https://github.com/crsaracco/amethyst-3d-tutorial">this tutorial's GitHub repo</a>. Same thing for typos and other errors.</p>
+<p>This tutorial assumes you're already familiar with Rust development. If you aren't, I'd recommend reading a little bit of <a href="https://doc.rust-lang.org/book/">the Rust book</a> and playing around with Rust a little.</p>
+<p>Also, I'm going to target <strong>Amethyst 0.12.0</strong> in this tutorial. Hopefully the concepts will carry over to future versions. I'll update this book on a &quot;best-effort&quot; <em>(read: &quot;if I feel like it and have time to do so&quot;)</em> basis -- feel free to send those issues and PRs to prod me though!</p>
+<h2><a class="header" href="#what-game-are-we-implementing-here" id="what-game-are-we-implementing-here">What game are we implementing here?</a></h2>
+<p><em>&quot;Back in the day&quot;™</em>, I played a decent amount of flash games. But now, flash is dead. RIP.</p>
+<p>One of those games was <strong>Cubefield</strong> (<a href="http://www.cubefield.org.uk/">website</a>) (<a href="https://www.youtube.com/watch?v=s80HExhyIng">youtube video example</a>), a very simple obstacle-avoiding game (in the genre of &quot;endless running&quot; games), similar to <a href="https://www.youtube.com/watch?v=eDLfSg3YwVQ0">Race The Sun</a> and others.</p>
+<p>I figure Cubefield would be a pretty simple target for a 3D tutorial: the objective of the game is pretty simple, the shapes are all pretty simple, and even the controls are simple. Even so, we should be able to cover a lot of the concepts that you need to go off and create your own 3D game.</p>
+<h2><a class="header" href="#additional-resources" id="additional-resources">Additional resources</a></h2>
+<p>Here's some other resources that you might find useful in developing games with Amethyst:</p>
+<ul>
+<li><a href="https://amethyst.rs/">Website</a>
+<ul>
+<li>the <a href="https://amethyst.rs/doc">&quot;Documentation&quot; page</a> lists a lot of the same stuff that I have here</li>
+</ul>
+</li>
+<li><a href="https://book.amethyst.rs/stable/">the Amethyst book</a></li>
+<li><a href="https://docs.amethyst.rs/stable/amethyst/">API reference</a></li>
+<li><a href="https://github.com/amethyst/amethyst">GitHub repo</a>
+<ul>
+<li>especially <a href="https://github.com/amethyst/amethyst/tree/v0.12.0/examples">the <code>examples</code> directory</a></li>
+</ul>
+</li>
+<li><a href="https://discordapp.com/invite/amethyst">Discord chat</a>: A lot of game devs (including a lot of the people who work on Amethyst) hang out on Discord, so it might be a good place to ask questions.</li>
+<li><a href="https://community.amethyst.rs/">Discourse forums</a>: Alternatively, you could also ask questions in the Discourse forums.</li>
+</ul>
+<h1><a class="header" href="#creating-an-empty-game" id="creating-an-empty-game">Creating an empty game</a></h1>
+<p>In this chapter, I'm going to go from &quot;having no project at all&quot; to &quot;having a game that does nothing except spawn a blank Amethyst window&quot;. Getting this basic game skeleton stuff out of the way will allow us to focus on concepts and game functionality in future chapters.</p>
+<h2><a class="header" href="#create-a-rust-project" id="create-a-rust-project">Create a Rust project</a></h2>
+<p>First, you need to create a Rust project.</p>
+<pre><code>cargo new cubefield
+</code></pre>
+<p>Phew, that was a lot of work.</p>
+<h2><a class="header" href="#set-up-amethyst-dependencies-and-the-main-function" id="set-up-amethyst-dependencies-and-the-main-function">Set up Amethyst dependencies and the <code>main</code> function</a></h2>
+<p>First thing's first, you need to add <code>amethyst</code> to your project's dependencies. You also need to choose a backend:</p>
+<ul>
+<li><code>vulkan</code> for Linux and Windows (and anything else that supports Vulkan)</li>
+<li><code>metal</code> for Mac OS X</li>
+<li><code>dx12</code> (for DirectX) is <em><strong>not</strong></em> currently available in Amethyst, but might be one day.</li>
+</ul>
+<p>Since I'm on Linux, I'll be using <code>vulkan</code>.</p>
+<p><strong>Cargo.toml:</strong></p>
+<pre><code class="language-toml">[package]
+# ...
+
+[dependencies]
+amethyst = {version=&quot;0.12.0&quot;, features=[&quot;vulkan&quot;]}
+</code></pre>
+<p>To make a few things easier, we're also going to change the function signature of <code>main</code>. Most Amethyst games use the return type <code>amethyst::Result&lt;()&gt;</code>, so that you can use <code>?</code> to automatically exit if various setup things fail.</p>
+<p><strong>main.rs:</strong></p>
+<pre><pre class="playground"><code class="language-rust">fn main() -&gt; amethyst::Result&lt;()&gt; {
+    Ok(())
+}
+</code></pre></pre>
+<p>Go ahead and <code>cargo run</code> that, and wait for Cargo to pull down the giant dependency tree and compile it. Depending on your computer's specs, it might take <em>a while</em>.</p>
+<p>If everything worked, congrats! You now have some code that depends on Amethyst. But it doesn't do anything yet...</p>
+<h2><a class="header" href="#create-a-logger" id="create-a-logger">Create a logger</a></h2>
+<p>Setting up a logger allows us to see what's going on in our game while it's running. It's particularly useful while you're still laying the groundwork of your game, as we are here: any debug, info, and warning message from within the Amethyst ecosystem will be printed out to the screen.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // Set up the Amethyst logger
+    amethyst::start_logger(Default::default());
+
+    Ok(())
+}
+</code></pre></pre>
+<p>As the Amethyst book says, there are many ways to configure the logger. <a href="https://docs-src.amethyst.rs/stable/amethyst/struct.Logger.html">Check out the API reference</a> for more info. The default setup will work just fine for this tutorial, though.</p>
+<h2><a class="header" href="#create-an-application-object" id="create-an-application-object">Create an <code>Application</code> object</a></h2>
+<p>The <a href="https://docs-src.amethyst.rs/stable/amethyst/type.Application.html">API reference</a> describes the <code>Application</code> object pretty well:</p>
+<blockquote>
+<p>An Application is the root object of the game engine. It binds the OS event loop, state machines, timers and other core components in a central place.</p>
+<p>Since Application functions as the root of the game, Amethyst does not need to use any global variables. Within this object is everything that your game needs to run.</p>
+</blockquote>
+<p>Every Amethyst game creates an <code>Application</code>, so that seems like a good place to start.</p>
+<p>In order to create an <code>Application</code>, we first have to create a few bits of information that it depends on:</p>
+<ul>
+<li>A <code>PathBuf</code> to an assets directory</li>
+<li>An initial <code>State</code> to start the game in</li>
+<li>A <code>GameDataBuilder</code> object; <code>GameData</code> holds a bunch of game logic and other stuff that your game needs during runtime.</li>
+</ul>
+<h4><a class="header" href="#assets-directory" id="assets-directory">Assets directory</a></h4>
+<p>First, we need to create a <code>PathBuf</code> that represents an assets directory. Assets are anything that your game loads before/during game runtime -- things like 3D models, textures, audio, sprites, etc. Pretty much any game of any substantial size will have an assets directory... but we won't need to have one for quite a while in this tutorial! Let's just give it a sane directory name (<code>assets</code>) for now, and I'll describe how assets work when we start using them.</p>
+<pre><pre class="playground"><code class="language-rust">use amethyst::utils::application_root_dir;
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (logger)
+
+    // Set up the assets directory (PathBuf)
+    let app_root = application_root_dir()?;
+    let assets_dir = app_root.join(&quot;assets&quot;);
+
+    Ok(())
+}
+</code></pre></pre>
+<p>By the way, you don't actually <em>need</em> to create the <code>assets/</code> directory now (in the root directory of your project, at the same level as <code>src/</code>), but you can if you want.</p>
+<h4><a class="header" href="#create-an-initial-state" id="create-an-initial-state">Create an initial <code>State</code></a></h4>
+<p>Amethyst has a neat style of state management built-in called a &quot;pushdown automaton&quot;, which you can read a little more about on <a href="https://en.wikipedia.org/wiki/Pushdown_automaton">Wikipedia</a> and <a href="https://github.com/amethyst/amethyst/wiki/Game-State-Machine-Design">Amethyst's wiki page</a>. It's a little different than the (maybe?) more-common &quot;<a href="https://en.wikipedia.org/wiki/Finite-state_machine">finite-state machine</a>&quot;, but pushdown automatons are a little more powerful.</p>
+<p>Regardless, we won't be needing the features of the state management system quite yet. Simple games like this can have just one main &quot;game&quot; state; once you want to start implementing main menus, pause menus, etc, <em>then</em> you'll probably want to start reaching for state management. Let's just satisfy <code>Application</code> for now.</p>
+<p>The easiest way to create a <code>State</code> in Amethyst is to define a unit struct and implement the <code>SimpleState</code> trait for it:</p>
+<pre><pre class="playground"><code class="language-rust">// (other includes)
+use amethyst::SimpleState;
+
+struct GameState;
+impl SimpleState for GameState {}
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (...)
+}
+</code></pre></pre>
+<h4><a class="header" href="#create-a-gamedatabuilder" id="create-a-gamedatabuilder">Create a <code>GameDataBuilder</code></a></h4>
+<p><code>GameData</code> is the &quot;central repository&quot; for a bunch of stuff your game needs during runtime, and <code>GameDataBuilder</code> is a convenient way to build it. For now, we don't need anything in the <code>GameData</code>, so we can just create a builder with nothing in it. We'll be adding stuff to it very soon (before the end of this chapter, even).</p>
+<pre><pre class="playground"><code class="language-rust">// (other includes)
+use amethyst::GameDataBuilder;
+
+// (GameState)
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (logger)
+    // (assets directory)
+
+    // Set up an empty (for now) GameDataBuilder
+    let game_data = GameDataBuilder::default();
+
+    Ok(())
+}
+</code></pre></pre>
+<h4><a class="header" href="#create-an-application-and-run-our-game" id="create-an-application-and-run-our-game">Create an <code>Application</code>, and run our game!</a></h4>
+<p>We're finally ready to create an <code>Application</code>!</p>
+<pre><pre class="playground"><code class="language-rust">// (other includes)
+use amethyst::Application;
+
+// (GameState)
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (logger)
+    // (assets directory)
+    // (GameDataBuilder)
+
+    // Run the game!
+    let mut game = Application::new(assets_dir, GameState, game_data)?;
+    game.run();
+
+    Ok(())
+}
+</code></pre></pre>
+<p>Go ahead and <code>cargo run</code> this to make sure everything's working. You should just see a few log messages print out before Amethyst dumps you into an infinite loop. <code>Ctrl+C</code>.</p>
+<h2><a class="header" href="#spawn-a-window" id="spawn-a-window">Spawn a window</a></h2>
+<p>Alright, now we need a window for our game.</p>
+<p>To do this, we're going to bring in a &quot;<a href="https://docs.amethyst.rs/stable/amethyst_core/bundle/trait.SystemBundle.html">Bundle</a>&quot; that implements a lot of the stuff for us. In general, you can think of bundles as a cross-section of game functionality that implements some feature for you. It's possible to (and you will likely want to eventually) create your own bundles, but that's a bit far away for now.</p>
+<p>In particular, we're going to be using the <code>RenderingBundle</code> here, which (along with some bundle plugins) implements a bunch of rendering stuff for us, including window creation itself.</p>
+<pre><pre class="playground"><code class="language-rust">// (other includes)
+use amethyst::renderer::plugins::RenderPbr3D;
+use amethyst::renderer::plugins::RenderToWindow;
+use amethyst::renderer::types::DefaultBackend;
+use amethyst::renderer::RenderingBundle;
+use amethyst::window::DisplayConfig;
+
+// (GameState)
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (logger)
+    // (assets directory)
+
+    // Set up the display configuration
+    let display_config = DisplayConfig {
+        title: &quot;Amethyst&quot;.to_string(),
+        dimensions: Some((1024, 768)),
+        ..Default::default()
+    };
+
+    // Set up the GameDataBuilder
+    let game_data = GameDataBuilder::default()
+        .with_bundle(
+            RenderingBundle::&lt;DefaultBackend&gt;::new()
+                .with_plugin(
+                    RenderToWindow::from_config(display_config)
+                        .with_clear([0.529, 0.808, 0.98, 1.0]),
+                )
+                .with_plugin(RenderPbr3D::default()),
+        )?;
+
+    // (Application)
+    Ok(())
+}
+</code></pre></pre>
+<p>That's a lot of new code, so let's break it down line-by-line.</p>
+<ul>
+<li>The <a href="https://docs.amethyst.rs/stable/amethyst_window/struct.DisplayConfig.html">DisplayConfig</a> is what will eventually get used by the <code>RenderToWindow</code> plugin to set up our window for us. Here we're setting the window's title and dimensions explicitly, then using the defaults for every other field in the struct.</li>
+<li>We already had <code>GameDataBuilder</code> before, but now we're adding a bundle to it. <code>with_bundle</code> is the function you use to add a bundle.</li>
+<li><code>RenderingBundle</code> is the bundle we're using to set up rendering. As far as bundles go, <code>RenderingBundle</code> is a pretty complex one: it delegates most of its work to plugins, which lets the user set up their rendering system as they see fit. It's also parameterized on a &quot;Backend&quot;, but since you set up your rendering backend in <code>Cargo.toml</code>, you can just use <code>DefaultBackend</code> here.</li>
+<li>Since <code>RenderingBundle</code> delegates most of its work to plugins, we need to give it some plugins. <code>with_plugin</code> is the function you use to add plugins, at least for <code>RenderingBundle</code>.</li>
+<li>The first plugin we're using is <code>RenderToWindow</code>, which sets up a window for us and allows us to draw to it. You have to supply a <code>DisplayConfig</code> for it to use, which is what we did up above. We're also specifying a &quot;clear value&quot;, which is what the renderer uses as a &quot;background&quot; to your game when there was nothing in front of it to render.
+<ul>
+<li>The format for the color is <code>[Red, Green, Blue, Alpha]</code>. You'll probably want to set alpha to <code>1.0</code>, and the rest of the colors are up to you. Here I made light sky-blue color.</li>
+<li>If you don't specify a clear value, the renderer won't clear the screen, just drawing over the last frame directly. It'll look similar to <a href="https://www.youtube.com/watch?v=ZjlSJQBdojo">the classic Windows lagging graphics glitch</a>. Try commenting that line of code out when you have more of a game to work with!</li>
+</ul>
+</li>
+<li>The second plugin is <code>RenderPbr3D</code>, which is a <a href="https://en.wikipedia.org/wiki/Physically_based_rendering">Physically Based Rendering</a> engine that we'll be using for rendering our game.</li>
+</ul>
+<p>Go ahead and <code>cargo run</code> that. You should get a blank window, filled with whatever your clear color is.</p>
+<h2><a class="header" href="#final-code-for-this-chapter" id="final-code-for-this-chapter">Final code for this chapter</a></h2>
+<p>The final code for this chapter can be found <a href="https://github.com/crsaracco/amethyst-3d-tutorial/tree/master/end-of-chapter-projects/empty-game">here</a>.</p>
+<h1><a class="header" href="#entity-and-component" id="entity-and-component">Entity and Component</a></h1>
+<p><em>[TODO: maybe re-write this a little better -- suggestions welcome]</em></p>
+<p><em>[TODO: also maybe move this page to the Appendix section?]</em></p>
+<p>We're almost ready to create shapes for our game and actually <em>draw</em> something, but first we should understand a little bit about what's going on under the hood in Amethyst when you &quot;create&quot; something in your game world.</p>
+<p>At its core, <strong>Amethyst is an <a href="https://en.wikipedia.org/wiki/Entity_component_system">entity-component-system</a> (ECS) style game engine</strong>. Although ECS is <em>kind of</em> a paradigm of creating &quot;objects&quot;, it's quite different from the &quot;<a href="https://en.wikipedia.org/wiki/Object-oriented_programming">object-oriented programming</a>&quot; (OOP) style that's commonly taught in schools.</p>
+<p>An <strong>entity</strong> represents a single object in your game world. To the programmer, these are typically unnamed; i.e. you don't &quot;bind&quot; them to a variable name, the ECS framework will store them for you.</p>
+<p>Under the hood, an entity is just a number representing its entity ID (and a little bit of extra data for internal ECS use which you don't have to worry about yet). You can't tell the game engine anything else about the entity, like <em>&quot;what kind of object is this?&quot;</em> or <em>&quot;how do I render this entity?&quot;</em> or anything else. It's just a number, that you don't even store yourself.</p>
+<p>So how do you use entities to build up objects for a game?</p>
+<p><strong>Components</strong> allow you to store additional information about an entity, like <em>&quot;this is a monster&quot;</em>, <em>&quot;this object is red&quot;</em>, or <em>&quot;this object is located at (35.0, 1.0, 0.0)&quot;</em>.</p>
+<p>In ECS, each different type of component is stored in its own storage. Let's say you had some RPG game -- all of the HPs for all of the different monsters and players in the game would be stored in some &quot;HP storage&quot;; all the MPs in their own &quot;MP storage&quot;, all of the items in their own &quot;Item storage&quot;, and so on.</p>
+<p>In OOP, you would store all of the data about your monsters in one struct per monster (its HP, its MP, a pointer to its mesh/texture/etc, its location in the world, etc).</p>
+<p>The reason for this entity/component split in ECS is that it allows you to store and retrieve your objects more efficiently, with noticeable effects on game performance. For example, if you cast some spell that did X damage to <em>every</em> monster in the world:</p>
+<ul>
+<li>In OOP, you'd have to load <em>all</em> of the structs for <em>all</em> of the monsters in the game. This would be terrible for cache performance, because you're pulling in a bunch of data you're ultimately not going to be using right now.</li>
+<li>In ECS, you just have to load the &quot;HP storage&quot; for all of the monsters -- you're using all of the data you just loaded, and <em>only</em> that data.</li>
+</ul>
+<p>In Amethyst's flavor of ECS, each instance of a component modifies exactly one entity. Each entity doesn't know anything about which components modify it. Here's a little example:</p>
+<pre><code>Entities   PositionComponent       TypeComponent   HpComponent
+0          [0] (1.0, 2.0, 0.0)     [0] Player      [0] 100
+1          [1] (5.0, 3.0, 0.0)     [1] Monster     [1] 50
+2          [2] (10.0, -2.0, 0.0)   [2] Building    [3] 75
+3          [3] (0.0, 5.0, 0.0)     [3] Monster
+                                    ^  ^
+                      (entity number)  (component value)
+</code></pre>
+<p>There are four entities in this tiny game: one player, one building, and two monsters. The positions for each entity are given in the table. The player (entity 0) has 100 HP, while the two monsters (entities 1 and 3) have 50 and 75 HP. Note that the building doesn't have any HP; every component is optional for each entity, and it doesn't really make sense for a building to have HP, so it doesn't have any <code>HpComponents</code> attached to it.</p>
+<p>If you were just given <code>entity 2</code>, you wouldn't be able to know anything about it without scanning all of your component storages. Luckily, you never need to go from entity -&gt; component, because you don't really do things this way in ECS.</p>
+<p>One neat thing about ECS is it allows you to do &quot;joins&quot; which are kind of similar to how relational databases work. If you want to modify all of the monsters' HPs, you would do a join on <code>TypeComponent</code> and <code>HpComponent</code> (which means that any entity that doesn't have both a type and an HP will be automatically filtered out), then you go through the results of your join and update the HP data if the Type is &quot;Monster&quot;. If you also gave each monster a <code>ColorComponent</code>, you could join on (<code>TypeComponent</code>, <code>ColorComponent</code>, and <code>HpComponent</code>), and update only the <code>HP</code>s of the entities that are both <code>Monster</code> and <code>Blue</code>. You can start to imagine some pretty cool functionality this enables you to do that would be pretty messy (and perhaps inefficient) in an OOP-style game engine!</p>
+<h2><a class="header" href="#entities-and-components-in-amethyst" id="entities-and-components-in-amethyst">Entities and components in Amethyst</a></h2>
+<p>To declare a component in Amethyst, you simply create a data structure (either a <code>struct</code> or an <code>enum</code>) that will hold the information that the component conveys, then you implement the <code>Component</code> trait for that data structure.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use amethyst::ecs::{Component, DenseVecStorage};
+
+// Type component
+enum Type {
+    Player,
+    Monster,
+    Building,
+}
+
+impl Component for Type {
+    type Storage = DenseVecStorage&lt;Self&gt;;
+}
+
+// HP component
+struct Hp {
+    hp: u32,
+}
+
+impl Component for Hp {
+    type Storage = DenseVecStorage&lt;Self&gt;;
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Remember that each component has its own storage -- the type that you give <code>type Storage</code> tells Amethyst how you want to actually store those components in memory. There are <a href="https://docs.rs/amethyst/0.9.0/amethyst/ecs/prelude/index.html?search=Storage">a few different types of storage to choose from</a>, but <code>DenseVecStorage</code> is a good default type to use if you don't have any good reasons to use something else.</p>
+<p>Usually, when you create an entity, you also give it any components that describe it. It'll end up looking something like this:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>world.create_entity()   // Create a new entity
+    .with(Type::Player) // Create a Type component, and associate it with this entity)
+    .with(Hp{hp: 100})  // Create an HP component, and associate it with this entity)
+    .build();
+<span class="boring">}
+</span></code></pre></pre>
+<p>where &quot;world&quot; is the thing that keeps track of all your entities and components (and other things, which we'll see later).</p>
+<h2><a class="header" href="#more-reading" id="more-reading">More reading</a></h2>
+<p>You can also read up on Entity and Component at <a href="https://book.amethyst.rs/stable/concepts/entity_and_component.html">the Amethyst book's page on this topic</a>.</p>
+<h1><a class="header" href="#drawing-something-on-the-screen" id="drawing-something-on-the-screen">Drawing something on the screen</a></h1>
+<p>Alright, I think we're ready to try <em>actually drawing</em> something on the screen.</p>
+<p>We're going to be using <a href="https://en.wikipedia.org/wiki/Physically_based_rendering">Physically based rendering</a> (PBR) for this game. It's pretty standard, and what other 3D engines (Unreal, Unity, Blender, etc) use to render stuff.</p>
+<p>In PBR, you need three things at minimum to draw stuff:</p>
+<ul>
+<li>A camera to view the world from</li>
+<li>Some objects to render</li>
+<li>A light source (<em>technically</em> you don't need this, but everything will be 100% black if you don't)</li>
+</ul>
+<p>So, let's just go in that order. All three of these things will be represented by standard <strong>entities</strong>, with various different <strong>components</strong> attached to them.</p>
+<h2><a class="header" href="#setup" id="setup">Setup</a></h2>
+<p>Before we can set any of those things up, though, we need some place in our code to actually <em>initialize</em> those objects, so that Amethyst's ECS framework knows about them.</p>
+<p>Amethyst states <a href="https://docs.rs/amethyst/0.8.0/amethyst/trait.State.html">have a few different methods</a> that run at different times and different intervals during the lifecycle of the state. Since we are forced to create an initial state to create an <code>Application</code>, we might as well use one of these methods to do the initialization work in.</p>
+<p>Since we only need to initialize our three entities once per game, the <code>on_start</code> method seems like a good place to do this. <code>on_start</code> runs only once when we enter that state, which is exactly what we need.</p>
+<pre><pre class="playground"><code class="language-rust">// (other includes)
+use amethyst::StateData;
+use amethyst::GameData;
+
+struct GameState;
+impl SimpleState for GameState {
+    fn on_start(&amp;mut self, state_data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+        // More code will go here
+    }
+}
+
+fn main() -&gt; amethyst::Result&lt;()&gt; {
+    // (...)
+}
+</code></pre></pre>
+<p>When Amethyst calls <code>on_start</code> (or any of the other methods), it passes in some &quot;state data&quot; that you can use for context into the rest of the game (see <a href="https://docs.rs/amethyst/0.8.0/amethyst/struct.StateData.html">StateData</a>). We don't really care about the lifetimes of the references inside the <code>StateData</code> for now, so we just use <code>'_</code> to tell Rust &quot;whatever you give us is fine with us&quot;.</p>
+<p>Since we will ultimately want to create entities within our game (to create our camera, lights, and spaceship), we are mostly concerned with the <code>world</code> field within <code>StateData</code>; this is the same <code>world</code> that I mentioned at the end of the last chapter.</p>
+<h2><a class="header" href="#creating-a-camera" id="creating-a-camera">Creating a camera</a></h2>
+<p>The first step is to create a camera, which allows us to see all the objects we crate in our game.</p>
+<p>To do this, we're going to use the <code>Camera</code> module from <code>renderer</code>.</p>
+<p>Let's make a brand new function called <code>initialize_camera</code>:</p>
+<pre><pre class="playground"><code class="language-rust">// (other includes)
+use amethyst::prelude::World;
+use amethyst::renderer::Camera;
+
+// (GameState)
+// (fn main)
+
+fn initialize_camera(world: &amp;mut World) {
+    world.create_entity()
+        .with(Camera::standard_3d(1024.0, 768.0))
+        .build();
+}
+</code></pre></pre>
+<p>Since we're making a 3D game, we're going to use <code>standard_3d</code>.</p>
+<p><code>1024.0</code> and <code>768.0</code> are just the dimensions of our window, which we defined in our <code>DisplayConfig</code>. You can refactor that into some constants if you like; I'll do some refactoring in an upcoming chapter.</p>
+<p>The camera follows our standard <strong>entity</strong> and <strong>component</strong> setup I mentioned earlier:</p>
+<ul>
+<li>Create a nameless entity in our game world with <code>world.create_entity()</code></li>
+<li>Add components to the entity; in this case, we're creating a <code>Camera</code> component and attaching it to this entity</li>
+<li>Build the entity to finalize everything and actually add it to the world</li>
+</ul>
+<p>So the camera is <em>basically</em> the same as any other entity/component you're going to make in your game; the only difference is that <code>Camera</code> does some magic rendering-related stuff in the background.</p>
+<p>Now, we need to hook that function up to our <code>on_start</code> method that we defined earlier:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn on_start(&amp;mut self, state_data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+    initialize_camera(state_data.world);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>If you <code>cargo run</code> that right now, you won't notice any difference. That's because we don't have any shapes for the camera to view! Let's make one now.</p>
+<h2><a class="header" href="#creating-an-object-to-render" id="creating-an-object-to-render">Creating an object to render</a></h2>
+<p>For now, we're just going to create a sphere so we understand what's going on. We'll modify it later to create the actual things in our game, like the spaceship and the cubes.</p>
+<p>Like the camera, the sphere is also going to be a standard entity with components. Let's just follow the same pattern as we did with the camera to create it.</p>
+<p>Create a new function called <code>initialize_sphere</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn initialize_sphere(world: &amp;mut World) {
+    world.create_entity()
+        .with( /*???*/ )
+        .build();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Call this function in <code>on_start</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn on_start(&amp;mut self, state_data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+    initialize_camera(state_data.world);
+    initialize_sphere(state_data.world);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Now we need to figure out how to give the sphere a &quot;shape&quot; to be rendered. In PBR, we need two things for our object to be renderable:</p>
+<ul>
+<li>A <strong>mesh</strong>, which gives our object a shape in 3D space</li>
+<li>A <strong>material</strong>, which tells the rendering engine how to actually render that shape.</li>
+</ul>
+<p>In the next chapter I'll dive into these things with much more detail, but for now I'll just throw a blob of code at you.</p>
+<h4><a class="header" href="#mesh" id="mesh">Mesh</a></h4>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mesh = world.exec(|loader: AssetLoaderSystemData&lt;'_, Mesh&gt;| {
+    loader.load_from_data(
+        Shape::Sphere(100, 100)
+            .generate::&lt;(Vec&lt;Position&gt;, Vec&lt;Normal&gt;, Vec&lt;Tangent&gt;, Vec&lt;TexCoord&gt;)&gt;(None)
+            .into(),
+        (),
+    )
+});
+<span class="boring">}
+</span></code></pre></pre>
+<p>Here we're generating the sphere mesh with <code>Shape::Sphere(100, 100)</code>. There are <a href="https://docs.amethyst.rs/stable/amethyst_rendy/shape/enum.Shape.html">a few basic shape generators to choose from</a>, in case you want to mess around with your own shapes. The <code>100, 100</code> arguments are basically just the number of vertexes to generate the sphere with; more vertexes means a finer-&quot;resolution&quot; sphere. <code>100</code> is probably overkill, but it works for us.</p>
+<h4><a class="header" href="#material" id="material">Material</a></h4>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let material_defaults = world.read_resource::&lt;MaterialDefaults&gt;().0.clone();
+let material = world.exec(|loader: AssetLoaderSystemData&lt;'_, Material&gt;| {
+        loader.load_from_data(
+            Material {
+                ..material_defaults
+            },
+            (),
+        )
+    },
+);
+<span class="boring">}
+</span></code></pre></pre>
+<p>We're basically generating a default material. We'll learn about materials and play around with them in the next chapter.</p>
+<h4><a class="header" href="#putting-it-all-together" id="putting-it-all-together">Putting it all together</a></h4>
+<p>We have a mesh, and we have a material. They can both be treated as <strong>components</strong>, so we can simply add them to the entity.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>world.create_entity()
+    .with(mesh)
+    .with(material)
+    .build();
+<span class="boring">}
+</span></code></pre></pre>
+<p>The full function should look like this:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn initialize_sphere(world: &amp;mut World) {
+    let mesh = world.exec(|loader: AssetLoaderSystemData&lt;'_, Mesh&gt;| {
+        loader.load_from_data(
+            Shape::Sphere(100, 100)
+                .generate::&lt;(Vec&lt;Position&gt;, Vec&lt;Normal&gt;, Vec&lt;Tangent&gt;, Vec&lt;TexCoord&gt;)&gt;(None)
+                .into(),
+            (),
+        )
+    });
+
+    let material_defaults = world.read_resource::&lt;MaterialDefaults&gt;().0.clone();
+    let material = world.exec(|loader: AssetLoaderSystemData&lt;'_, Material&gt;| {
+        loader.load_from_data(
+                Material {
+                    ..material_defaults
+                },
+                (),
+            )
+        },
+    );
+
+    world.create_entity()
+        .with(mesh)
+        .with(material)
+        .build();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Okay, we have a camera, and we have a renderable object. We don't have a light source yet, but we should still be able to see <em>some</em> shape, right? Let's <code>cargo run</code> the project and see what happens!</p>
+<p><img src="images/blank-screen-camera-shape-same-location.png" alt="blank screen" /></p>
+<p>Wait, what? Shouldn't we see a black sphere, at least?</p>
+<p>The problem turns out to be that the camera is effectively spawned <em>inside</em> the sphere, which means it won't render the sphere. We need to move stuff around in our scene for things to make sense.</p>
+<h2><a class="header" href="#transforms" id="transforms">Transforms</a></h2>
+<p>To move stuff around, we're going to use the <code>TransformBundle</code>.</p>
+<p>Let's add it to our <code>GameDataBuilder</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use amethyst::core::{Transform, TransformBundle};
+
+let game_data = GameDataBuilder::default()
+    .with_bundle(TransformBundle::new())?
+    // other bundles
+<span class="boring">}
+</span></code></pre></pre>
+<p>Now, let's move our camera back a little bit so we can see the outside of the sphere.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn initialize_camera(world: &amp;mut World) {
+    let mut transform = Transform::default();
+    transform.set_translation_xyz(0.0, 0.0, 10.0);
+
+    world.create_entity()
+        .with(Camera::standard_3d(1024.0, 768.0))
+        .with(transform)
+        .build();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>By default, the camera faces &quot;downwards&quot; in the negative Z direction. So if we move it &quot;upwards&quot; (positive Z) -- which is what we did with <code>set_translation_xyz</code> -- we should be able to see something sitting at <code>(0.0, 0.0, 0.0)</code>.</p>
+<p>Transforms are treated as yet another <strong>component</strong>, so you can just attach them to your entity with <code>with()</code>.</p>
+<p>Finally, let's make sure the sphere is sitting at <code>(0.0, 0.0, 0.0)</code>, and we should be able to see it.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// ...
+
+let mut transform = Transform::default();
+transform.set_translation_xyz(0.0, 0.0, 0.0);
+
+world.create_entity()
+    .with(mesh)
+    .with(material)
+    .with(transform)
+    .build();
+<span class="boring">}
+</span></code></pre></pre>
+<p><img src="images/black-sphere.png" alt="black sphere" /></p>
+<p>Heeey, look at that. Pretty neat!</p>
+<h2><a class="header" href="#create-a-light-source" id="create-a-light-source">Create a light source</a></h2>
+<p>The final thing we need to do for a &quot;complete&quot; PBR system is create a light source. You can think of this as a lightbulb or the sun -- light is generated from the source, and scatters out from the source. When light hits an object like our sphere, it bounces off that object in a bunch of different directions. Some of that light bouncing off the object will bounce towards our camera. Then, the camera picks it up and renders what it sees for us on the screen. <em>(This is simplifying how things actually work in PBR quite a bit, but the concepts hold.)</em></p>
+<p>The shape's material affects <em>how</em> the light bounces off of it. You can change a whole bunch of stuff about the material, and the results will be a wide variety of changes to how the shape is rendered on screen. We'll explore materials in the next chapter.</p>
+<p>In our scene, the shape is blocking the background, so the renderer will draw <em>something</em> there. However, we don't have any light source to generate light to bounce off the shape, so the renderer will just render it as 100% black.</p>
+<p>Our choice of a light blue clear color makes the scene above a little unintuitive: there's actually no &quot;light&quot; coming from the background, it's just what we draw if we have nothing else to render. It would make a little more sense if we chose a black clear color, but whatever; let's just create a light source and see what happens!</p>
+<p>Like the camera and the sphere, the light source is just another ordinary <strong>entity</strong> with some <strong>components</strong> attached.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use amethyst::renderer::light::{Light, PointLight};
+use amethyst::renderer::palette::rgb::Rgb;
+
+fn initialize_light(world: &amp;mut World) {
+    let light: Light = PointLight {
+        intensity: 10.0,
+        color: Rgb::new(1.0, 1.0, 1.0),
+        ..PointLight::default()
+    }.into();
+
+    let mut transform = Transform::default();
+    transform.set_translation_xyz(5.0, 5.0, 20.0);
+
+    world
+        .create_entity()
+        .with(light)
+        .with(transform)
+        .build();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The <code>Light</code> component is a PointLight, with intensity <code>10.0</code> and a completely white hue. We're moving the light behind the camera (<code>20.0</code> in the Z direction), and a little off-center.</p>
+<p>Now, just add it to the game:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct GameState;
+impl SimpleState for GameState {
+    fn on_start(&amp;mut self, state_data: StateData&lt;'_, GameData&lt;'_, '_&gt;&gt;) {
+        initialize_camera(state_data.world);
+        initialize_sphere(state_data.world);
+        initialize_light(state_data.world);
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><img src="images/shaded-sphere.png" alt="shaded sphere" /></p>
+<p>Now it actually <em>looks</em> like a sphere.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Amethyst 3D Tutorial - Amethyst 3D Tutorial</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">Amethyst 3D Tutorial</a></li><li class="chapter-item expanded "><a href="empty-game.html"><strong aria-hidden="true">1.</strong> Creating an empty game</a></li><li class="chapter-item expanded "><a href="entity-and-component.html"><strong aria-hidden="true">2.</strong> Entity and Component</a></li><li class="chapter-item expanded "><a href="drawing-something-on-the-screen.html"><strong aria-hidden="true">3.</strong> Drawing something on the screen</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Amethyst 3D Tutorial</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#amethyst-3d-tutorial" id="amethyst-3d-tutorial">Amethyst 3D Tutorial</a></h1>
+<p>After having read <a href="https://amethyst.rs/">Amethyst</a>'s official <a href="https://book.amethyst.rs/stable/">mdbook tutorial</a>, I've been excited to start diving in to Amethyst and trying some more stuff out, particularly when it comes to 3D game development.</p>
+<p>Unfortunately, I left the official book feeling a little lost on how to do 3D stuff, and I've seen a few other people around the web express the same feelings. The <a href="https://github.com/amethyst/amethyst/tree/master/examples">examples</a> have a lot of good content if you dig through them, but it's a little annoying having to piece together everything you need to do to get X done. So, I figured I'd create this tutorial! Worst-case, it'll serve as a little notebook for myself to reference, but hopefully it helps someone else out as well. :)</p>
+<p>I'll be covering a lot of the same stuff that the official book covers (at least as far as basic Amethyst engine concepts are concerned), but I'm going to structure this tutorial a little differently than the book does. Instead of describing a lot of the basic concepts up front and then making a game with those concepts afterwards, I'm going to inline all of those explanations, discussing the concepts right before you use them.</p>
+<p>If you want to, feel free to read <a href="https://book.amethyst.rs/stable/">the Amethyst book</a> now (especially everything up to and including chapter 3: &quot;Concepts&quot;) to get a feel for the Amethyst ecosystem. My goal is to eventually cover everything that the book does, though, so if you want to skip it and dive right in to 3D game development, I hope this tutorial explains everything well enough.</p>
+<p>Also, as a side-note, I'm going to postpone the use of assets and config files until much later in this tutorial compared to the book, because I think it makes it easier to understand what's going on in the Amethyst ecosystem that way. I will be covering that stuff later in the tutorial, so don't fear!</p>
+<h2><a class="header" href="#disclaimer" id="disclaimer">Disclaimer</a></h2>
+<p>I'm still very much a noob at Amethyst, so if you notice something that I misunderstood, feel free to send me an issue or pull request on <a href="https://github.com/crsaracco/amethyst-3d-tutorial">this tutorial's GitHub repo</a>. Same thing for typos and other errors.</p>
+<p>This tutorial assumes you're already familiar with Rust development. If you aren't, I'd recommend reading a little bit of <a href="https://doc.rust-lang.org/book/">the Rust book</a> and playing around with Rust a little.</p>
+<p>Also, I'm going to target <strong>Amethyst 0.12.0</strong> in this tutorial. Hopefully the concepts will carry over to future versions. I'll update this book on a &quot;best-effort&quot; <em>(read: &quot;if I feel like it and have time to do so&quot;)</em> basis -- feel free to send those issues and PRs to prod me though!</p>
+<h2><a class="header" href="#what-game-are-we-implementing-here" id="what-game-are-we-implementing-here">What game are we implementing here?</a></h2>
+<p><em>&quot;Back in the day&quot;™</em>, I played a decent amount of flash games. But now, flash is dead. RIP.</p>
+<p>One of those games was <strong>Cubefield</strong> (<a href="http://www.cubefield.org.uk/">website</a>) (<a href="https://www.youtube.com/watch?v=s80HExhyIng">youtube video example</a>), a very simple obstacle-avoiding game (in the genre of &quot;endless running&quot; games), similar to <a href="https://www.youtube.com/watch?v=eDLfSg3YwVQ0">Race The Sun</a> and others.</p>
+<p>I figure Cubefield would be a pretty simple target for a 3D tutorial: the objective of the game is pretty simple, the shapes are all pretty simple, and even the controls are simple. Even so, we should be able to cover a lot of the concepts that you need to go off and create your own 3D game.</p>
+<h2><a class="header" href="#additional-resources" id="additional-resources">Additional resources</a></h2>
+<p>Here's some other resources that you might find useful in developing games with Amethyst:</p>
+<ul>
+<li><a href="https://amethyst.rs/">Website</a>
+<ul>
+<li>the <a href="https://amethyst.rs/doc">&quot;Documentation&quot; page</a> lists a lot of the same stuff that I have here</li>
+</ul>
+</li>
+<li><a href="https://book.amethyst.rs/stable/">the Amethyst book</a></li>
+<li><a href="https://docs.amethyst.rs/stable/amethyst/">API reference</a></li>
+<li><a href="https://github.com/amethyst/amethyst">GitHub repo</a>
+<ul>
+<li>especially <a href="https://github.com/amethyst/amethyst/tree/v0.12.0/examples">the <code>examples</code> directory</a></li>
+</ul>
+</li>
+<li><a href="https://discordapp.com/invite/amethyst">Discord chat</a>: A lot of game devs (including a lot of the people who work on Amethyst) hang out on Discord, so it might be a good place to ask questions.</li>
+<li><a href="https://community.amethyst.rs/">Discourse forums</a>: Alternatively, you could also ask questions in the Discourse forums.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+                            <a rel="next" href="empty-game.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+                    <a rel="next" href="empty-game.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
