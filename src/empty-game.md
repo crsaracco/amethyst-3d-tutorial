@@ -29,7 +29,7 @@ Since I'm on Linux, I'll be using `vulkan`.
 # ...
 
 [dependencies]
-amethyst = {version="0.12.0", features["vulkan"]}
+amethyst = {version="0.12.0", features=["vulkan"]}
 ```
 
 To make a few things easier, we're also going to change the function signature of `main`. Most Amethyst games use the return type `amethyst::Result<()>`, so that you can use `?` to automatically exit if various setup things fail.
